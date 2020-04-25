@@ -1,4 +1,4 @@
-export default Data = [
+export const data = [
     {
         "id": 1,
         "first_name": "Wini",

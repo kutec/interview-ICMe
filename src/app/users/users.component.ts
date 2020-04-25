@@ -1,4 +1,12 @@
 import { Component, OnInit } from "@angular/core";
+import { data } from './data.json';
+
+export interface User {
+  name: string;
+  email: string;
+  type: string;
+  rDate: string;
+}
 
 @Component({
   selector: "app-users",
@@ -6,7 +14,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./users.component.css"]
 })
 export class UsersComponent implements OnInit {
+  dataSource = data;
+  displayedColumns: string[] = ['name', 'email', 'type', 'date'];
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.dataSource[1]);
+  }
 }

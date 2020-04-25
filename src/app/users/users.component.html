@@ -1,0 +1,41 @@
+<h1>Users Component</h1>
+
+<p>By default all users are displayed. However, you can filtered out Users with given buttons below.</p>
+
+<mat-button-toggle-group name="fontStyle" aria-label="Users">
+	<mat-button-toggle value="user">Admin</mat-button-toggle>
+	<mat-button-toggle value="editor">Editor</mat-button-toggle>
+	<mat-button-toggle value="user">User</mat-button-toggle>
+</mat-button-toggle-group>
+
+<mat-table [dataSource]="dataSource" matSort>
+	<!-- Name Column -->
+	<ng-container matColumnDef="name">
+    {{ data | json}}
+		<mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+		<mat-cell *matCellDef="let row"> {{row.first_name}} {{row.last_name}} </mat-cell>
+	</ng-container>
+
+	<!-- Color Column -->
+	<ng-container matColumnDef="email">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+		<mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+	</ng-container>
+
+  <!-- Color Column -->
+	<ng-container matColumnDef="type">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+		<mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+	</ng-container>
+
+  <!-- Color Column -->
+	<ng-container matColumnDef="date">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date </mat-header-cell>
+		<mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;">
+	</mat-row>
+
+</mat-table>
